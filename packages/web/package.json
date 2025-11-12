@@ -24,7 +24,7 @@
     "js-base64": "3.7.7",
     "lang-map": "0.4.0",
     "luxon": "catalog:",
-    "marked": "15.0.12",
+    "marked": "17.0.0",
     "marked-shiki": "1.2.1",
     "rehype-autolink-headings": "7.1.0",
     "remeda": "catalog:",
