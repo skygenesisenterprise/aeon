@@ -9,7 +9,10 @@
     "dev": "bun run --cwd packages/opencode --conditions=browser src/index.ts",
     "typecheck": "bun turbo typecheck",
     "prepare": "husky",
-    "random": "echo 'Random script'"
+    "random": "echo 'Random script'",
+    "docker:build": "docker build -t skygenesisenterprise/aeon:latest .",
+    "docker:run": "docker run -it --rm skygenesisenterprise/aeon:latest",
+    "docker:push": "docker push skygenesisenterprise/aeon:latest"
   },
   "workspaces": {
     "packages": [

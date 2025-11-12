@@ -55,6 +55,21 @@ Aeon is built as a monorepo with the following key components:
 
 ### Installation
 
+#### Option 1: Docker (Recommended)
+
+```bash
+# Pull the Docker image
+docker pull skygenesisenterprise/aeon:latest
+
+# Run Aeon
+docker run -it --rm skygenesisenterprise/aeon:latest
+
+# Or mount your project directory
+docker run -it --rm -v $(pwd):/workspace -w /workspace skygenesisenterprise/aeon:latest run
+```
+
+#### Option 2: Package Manager
+
 ```bash
 # Install via npm
 npm install -g @skygenesisenterprise/aeon
@@ -73,13 +88,29 @@ curl -fsSL https://aeon.skygenesisenterprise.com/install | sh
 aeon run
 
 # Initialize in a specific directory
-aeib run ./my-project
+aeon run ./my-project
 
 # List available models
 aeon models
 
 # Check authentication status
 aeon auth status
+```
+
+#### Docker Usage
+
+```bash
+# Build the Docker image
+bun run docker:build
+
+# Run with Docker
+bun run docker:run
+
+# Push to registry
+bun run docker:push
+
+# Run with project mounted
+docker run -it --rm -v $(pwd):/workspace -w /workspace skygenesisenterprise/aeon:latest run
 ```
 
 ### Development Setup
@@ -146,7 +177,6 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 - **[GitHub Issues](https://github.com/skygenesisenterprise/aeon/issues)** - Bug reports and feature requests
 - **[Discord Community](https://skygenesisenterprise.com/discord)** - Chat with the community
 - **[Email Support](mailto:support@skygenesisenterprise.com)** - Enterprise support
-
 
 ## 🌟 Roadmap
 
