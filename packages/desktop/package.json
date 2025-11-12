@@ -38,7 +38,7 @@
     "diff": "catalog:",
     "fuzzysort": "catalog:",
     "luxon": "catalog:",
-    "marked": "16.2.0",
+    "marked": "17.0.0",
     "marked-shiki": "1.2.1",
     "remeda": "catalog:",
     "shiki": "3.9.2",
