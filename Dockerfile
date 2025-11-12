@@ -33,13 +33,31 @@ WORKDIR /app
 
 # Copy dependencies
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/packages/*/node_modules ./packages/*/node_modules
+COPY --from=deps /app/packages/opencode/node_modules ./packages/opencode/node_modules
+COPY --from=deps /app/packages/ui/node_modules ./packages/ui/node_modules
+COPY --from=deps /app/packages/sdk/js/node_modules ./packages/sdk/js/node_modules
+COPY --from=deps /app/packages/function/node_modules ./packages/function/node_modules
+COPY --from=deps /app/packages/console/app/node_modules ./packages/console/app/node_modules
+COPY --from=deps /app/packages/desktop/node_modules ./packages/desktop/node_modules
+COPY --from=deps /app/packages/web/node_modules ./packages/web/node_modules
+COPY --from=deps /app/packages/slack/node_modules ./packages/slack/node_modules
+COPY --from=deps /app/packages/script/node_modules ./packages/script/node_modules
+COPY --from=deps /app/packages/plugin/node_modules ./packages/plugin/node_modules
+COPY --from=deps /app/packages/console/core/node_modules ./packages/console/core/node_modules
+COPY --from=deps /app/packages/console/mail/node_modules ./packages/console/mail/node_modules
+COPY --from=deps /app/packages/console/resource/node_modules ./packages/console/resource/node_modules
 
 # Copy source code
 COPY . .
 
+# Install git for build script
+RUN apk add --no-cache git
+
+# Initialize git repository for build script
+RUN git init && git config user.email "build@docker" && git config user.name "Docker Build"
+
 # Build the opencode CLI
-RUN cd packages/opencode && bun run build
+RUN cd packages/opencode && OPENCODE_CHANNEL=production bun run build
 
 # Production image
 FROM base AS runner
